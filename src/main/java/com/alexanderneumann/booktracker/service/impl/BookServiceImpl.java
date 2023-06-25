@@ -32,29 +32,21 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book saveBook(BookDto bookDto) {
+    public void saveBook(BookDto bookDto) {
         Book book = mapToBook(bookDto);
-        return bookRepository.save(book);
+        bookRepository.save(book);
     }
 
     @Override
-    public Book updateBook(long bookId, BookDto bookDto) {
-        Book existingBook = bookRepository.findById(bookId).orElse(null);
-        if (existingBook == null) {
-            throw new IllegalArgumentException("Book not found");
-        }
-        existingBook.setTitle(bookDto.getTitle());
-        existingBook.setAuthor(bookDto.getAuthor());
-        existingBook.setIsbn(bookDto.getIsbn());
-        existingBook.setPublishYear(bookDto.getPublishYear());
-        existingBook.setImageUrl(bookDto.getImageUrl());
-        return bookRepository.save(existingBook);
+    public void updateBook(BookDto bookDto) {
+        Book book = mapToBook(bookDto);
+        bookRepository.save(book);
     }
 
     @Override
     public void deleteBook(long bookId) {
         Book existingBook = bookRepository.findById(bookId).orElse(null);
-        if (existingBook ==null) {
+        if (existingBook == null) {
             throw new IllegalArgumentException("Book not found");
         }
         bookRepository.deleteById(bookId);

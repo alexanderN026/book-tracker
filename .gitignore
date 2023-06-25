@@ -9,6 +9,7 @@ target/
 mvnw
 mvnw.cmd
 bookData.txt
+Preview book-tracker.png
 
 ### STS ###
 .apt_generated

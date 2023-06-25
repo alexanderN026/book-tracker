@@ -1,0 +1,76 @@
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org/"
+        xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect/"
+        layout:decorate="~{layout}">
+<head>
+    <title>Book Create</title>
+</head>
+<body layout:fragment="body">
+<section class="py-5">
+    <div class="container">
+        <form role="form" method="post" th:action="@{/books/new}" th:object="${book}" class="row g-3">
+            <input type="hidden" th:field="*{id}">
+            <div class="col-md-7">
+                <label for="author" class="form-label">Author</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="author"
+                        name="author"
+                        th:field="*{author}"
+                        placeholder="Author">
+                <p th:if="${#fields.hasErrors('author')}" class="text-danger" th:errors="*{author}"></p>
+            </div>
+            <div class="col-md-3">
+                <label for="isbn" class="form-label">ISBN</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="isbn"
+                        name="isbn"
+                        th:field="*{isbn}"
+                        placeholder="ISBN">
+                <p th:if="${#fields.hasErrors('isbn')}" class="text-danger" th:errors="*{isbn}"></p>
+            </div>
+            <div class="col-2">
+                <label for="publishYear" class="form-label">Publish year</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="publishYear"
+                        name="publishYear"
+                        th:field="*{publishYear}"
+                        placeholder="Publish year">
+                <p th:if="${#fields.hasErrors('publishYear')}" class="text-danger" th:errors="*{publishYear}"></p>
+            </div>
+            <div class="col-12">
+                <label for="title" class="form-label">Title</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        name="title"
+                        th:field="*{title}"
+                        placeholder="Title">
+                <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
+            </div>
+            <div class="col-md-12">
+                <label for="imageUrl" class="form-label">Image url</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="imageUrl"
+                        name="imageUrl"
+                        th:field="*{imageUrl}"
+                        placeholder="Image url">
+                <p th:if="${#fields.hasErrors('imageUrl')}" class="text-danger" th:errors="*{imageUrl}"></p>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
